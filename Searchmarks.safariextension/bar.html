@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
+  
     <style>
+    
       body
       {
         margin: 0;
-        padding: 2px;
+        padding: 3px 8px;
       }
+      
+      form
+      {
+        margin: 0;
+        padding: 0;
+        display: inline;
+      }
+      
+      #search_field
+      {
+        width: 200px;
+      }
+      
     </style>
+    
+    <script type="text/javascript">
+    
+      function search(terms)
+      {
+        safari.application.activeBrowserWindow.activeTab.url = 'http://www.google.com/search?q='+escape(terms);
+      }
+      
+    </script>
+    
   </head>
+  
   <body>
     Searchmarks
-    <select>
-      <option>Google</option>
-      <option>Yahoo</option>
-    </select>
-    <input type="search" autosave="org.horizon-nigh.searchmarks.safari.extension" results="10" />
+    <form onSubmit="search(document.getElementById('search_field').value); return false;" >
+      <select>
+        <option>Google</option>
+        <!-- <option>Yahoo</option> -->
+      </select>
+      <input id="search_field" type="search" autosave="org.horizon-nigh.searchmarks.safari.extension" results="10" />
+      <input id="go_button" type="submit" value="&#8594;" />
+    </form>
   </body>
+  
 </html>
