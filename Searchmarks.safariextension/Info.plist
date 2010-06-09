@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>D.M.Deller</string>
+	<key>CFBundleDisplayName</key>
+	<string>Searchmarks</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.horizon-nigh.searchmarks.ext.safari</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Bars</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>bar.html</string>
+				<key>Identifier</key>
+				<string>org.horizon-nigh.searchmarks.ext.safari.res.bar</string>
+				<key>Label</key>
+				<string>Searchmarks</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict/>
+	</dict>
+	<key>Description</key>
+	<string>A toolbar to bring OpenSearch to Safari</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict/>
+	</dict>
+	<key>Website</key>
+	<string>http://github.com/dmdeller/searchmarks</string>
+</dict>
+</plist>
