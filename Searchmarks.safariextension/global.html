@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  
+    <script type="text/javascript">
+      
+      const bars = safari.extension.bars;
+      
+      function performCommand(event)
+      {
+        if (event.command == 'searchmarks.button.toggle-bar')
+        {
+          toggleSearchmarksBar();
+        }
+      }
+      
+      function validateCommand(event)
+      {
+      }
+    
+      function toggleSearchmarksBar()
+      {
+        for (var i = 0; i < bars.length; ++i)
+        {
+          var bar = bars[i];
+          if (bar.browserWindow === safari.application.activeBrowserWindow && bar.identifier === "searchmarks.bar")
+          {
+            if (bar.visible)
+              bar.hide();
+            else
+              bar.show();
+          }
+        }
+      }
+      
+      safari.application.addEventListener("command", performCommand, false);
+      safari.application.addEventListener("validate", validateCommand, false);
+    
+    </script>
+  
+  </head>
+
+  <body>
+  </body>
+
+</html>
