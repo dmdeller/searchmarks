@@ -61,12 +61,73 @@
       
     </style>
     
+    <script type="text/javascript" src="jquery/js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript">
     
-      function search(terms)
-      {
-        safari.application.activeBrowserWindow.activeTab.url = 'http://www.google.com/search?q='+escape(terms);
+      SearchmarksUI = {
+      
+        searchEngine : null,
+    
+        search : function(query)
+        {
+          var url;
+          var query = escape(query);
+          
+          switch (this.searchEngine)
+          {
+            case 'wikipedia':
+              url = 'http://www.wikipedia.org/search-redirect.php?search='+query+'&language=en&go=Go';
+              break;
+              
+            case 'amazon':
+              url = 'http://www.amazon.com/s/?field-keywords='+query;
+              break;
+              
+            case 'lastfm':
+              url = 'http://www.last.fm/search?q='+query;
+              break;
+              
+            case 'imdb':
+              url = 'http://www.imdb.com/find?s=all&q='+query;
+              break;
+              
+            default:
+              throw "Unknown search engine";
+          }
+          
+          safari.application.activeBrowserWindow.activeTab.url = url;
+        },
+        
+        setSearchEngine : function(searchEngine, setFocus)
+        {
+          // un-toggle all buttons
+          $('.engine_button').each(
+            function(index)
+            {
+              this.className = 'engine_button';
+            }
+          );
+          
+          // toggle the specific button we need
+          $('#engine_button_'+searchEngine).get(0).className = 'engine_button toggled';
+          
+          this.searchEngine = searchEngine;
+          
+          if (setFocus == undefined || setFocus == true)
+          {
+            $('#search_field').select();
+            $('#search_field').focus();
+          }
+        }
+        
       }
+      
+      $(document).ready(
+        function()
+        {
+          SearchmarksUI.setSearchEngine('wikipedia', false);
+        }
+      );
       
     </script>
     
@@ -74,14 +135,15 @@
   
   <body>
     <a href="javascript:return false;">Searchmarks</a>
-    <form onSubmit="search(document.getElementById('search_field').value); return false;" >
-      <input id="search_field" type="search" autosave="org.horizon-nigh.searchmarks.safari.extension" results="10" />
+    <form onSubmit="SearchmarksUI.search(document.getElementById('search_field').value); return false;" >
+      <input id="search_field" type="search" autosave="org.horizon-nigh.searchmarks.ext.safari" results="10" />
       <input id="go_button" type="submit" value="&#8594;" />
     </form>
     
-    <a href="javascript:return false;" class="toggled">Google</a>
-    <a href="javascript:return false;">Yahoo</a>
-    <a href="javascript:return false;">Wikipedia</a>
+    <a class="engine_button" id="engine_button_wikipedia" href="javascript:SearchmarksUI.setSearchEngine('wikipedia'); return false;">Wikipedia</a>
+    <a class="engine_button" id="engine_button_amazon" href="javascript:SearchmarksUI.setSearchEngine('amazon'); return false;">Amazon</a>
+    <a class="engine_button" id="engine_button_lastfm" href="javascript:SearchmarksUI.setSearchEngine('lastfm'); return false;">Last.fm</a>
+    <a class="engine_button" id="engine_button_imdb" href="javascript:SearchmarksUI.setSearchEngine('imdb'); return false;">IMDb</a>
   </body>
   
 </html>
