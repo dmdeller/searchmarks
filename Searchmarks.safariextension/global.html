@@ -21,16 +21,27 @@
     
       function toggleSearchmarksBar()
       {
+        var found = false;
+        
         for (var i = 0; i < bars.length; ++i)
         {
           var bar = bars[i];
+          
           if (bar.browserWindow === safari.application.activeBrowserWindow && bar.identifier === "searchmarks.bar")
           {
             if (bar.visible)
               bar.hide();
             else
               bar.show();
+              
+            found = true;
           }
+        }
+        
+        if (!found)
+        {
+          alert("Error: Searchmarks bar not found. I don't know why this happens, but I am trying to track it down.");
+          throw "Searchmarks bar not found";
         }
       }
       
