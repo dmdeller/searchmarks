@@ -50,7 +50,16 @@
 	<key>Content</key>
 	<dict>
 		<key>Scripts</key>
-		<dict/>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>discover.js</string>
+			</array>
+			<key>Start</key>
+			<array>
+				<string>jquery/js/jquery-1.4.2.min.js</string>
+			</array>
+		</dict>
 	</dict>
 	<key>Description</key>
 	<string>A toolbar to bring OpenSearch to Safari</string>
@@ -59,7 +68,12 @@
 	<key>Permissions</key>
 	<dict>
 		<key>Website Access</key>
-		<dict/>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
 	</dict>
 	<key>Website</key>
 	<string>http://github.com/dmdeller/searchmarks</string>

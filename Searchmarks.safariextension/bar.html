@@ -125,9 +125,21 @@
       $(document).ready(
         function()
         {
+          $('#opensearch_add_button').hide();
           SearchmarksUI.setSearchEngine('wikipedia', false);
         }
       );
+      
+      function waitForMessage(event)
+      {
+        if (event.name == 'discover-opensearch')
+        {
+          $('#opensearch_add_button').val(event.message);
+          $('#opensearch_add_button').show();
+        }
+      }
+      
+      safari.application.activeBrowserWindow.activeTab.addEventListener("message", waitForMessage, true);
       
     </script>
     
@@ -144,6 +156,10 @@
     <a class="engine_button" id="engine_button_amazon" href="javascript:SearchmarksUI.setSearchEngine('amazon'); return false;">Amazon</a>
     <a class="engine_button" id="engine_button_lastfm" href="javascript:SearchmarksUI.setSearchEngine('lastfm'); return false;">Last.fm</a>
     <a class="engine_button" id="engine_button_imdb" href="javascript:SearchmarksUI.setSearchEngine('imdb'); return false;">IMDb</a>
+    
+    <div style="float: right;">
+      <input type="button" id="opensearch_add_button" value="Add this site" />
+    </div>
   </body>
   
 </html>
