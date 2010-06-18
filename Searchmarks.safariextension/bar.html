@@ -196,6 +196,16 @@
               }
             }
           );
+          
+          // this only fires when the toolbar (not the window) is brought into focus. see inject.js
+          $(window).bind("focus", function()
+            {
+              setTimeout(function()
+              {
+                safari.self.tab.dispatchMessage("window-focus", this.href);
+              }, 100);
+            }
+          );
 
         }
       );
