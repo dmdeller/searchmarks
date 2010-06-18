@@ -53,7 +53,7 @@
 		<dict>
 			<key>End</key>
 			<array>
-				<string>discover.js</string>
+				<string>inject.js</string>
 			</array>
 			<key>Start</key>
 			<array>

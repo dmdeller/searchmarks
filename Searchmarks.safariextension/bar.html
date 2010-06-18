@@ -21,6 +21,19 @@
       {
         width: 200px;
       }
+
+      #go_button
+      {
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fefefe), to(#b7b7b7));
+        border: 1px solid #555555;
+        -webkit-border-radius: 3px;
+      }
+
+      .blurred #go_button
+      {
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fefefe), to(#d1d1d1));
+        border: 1px solid #a4a4a4;
+      }
       
       /**
        * Thanks to Chris Morrell <http://cmorrell.com/> for the toolbar style code
@@ -158,6 +171,11 @@
 
           $('#opensearch_add_button').hide();
 
+          if (safari.extension.settings.getItem("show-go-button") == false)
+          {
+            $('#go_button').hide();
+          }
+
           SearchmarksUI.setSearchEngine('wikipedia', false);
 
           $('#settings_button').mouseenter(
@@ -184,14 +202,51 @@
       
       function waitForMessage(event)
       {
-        if (event.name == 'discover-opensearch')
+        switch (event.name)
         {
-          $('#opensearch_add_button').val(event.message);
-          $('#opensearch_add_button').show();
+          case 'discover-opensearch':
+            $('#opensearch_add_button').val(event.message);
+            $('#opensearch_add_button').show();
+            break;
+
+          case 'window-focus':
+            $('body').get(0).className = 'focused';
+            break;
+
+          case 'window-blur':
+            $('body').get(0).className = 'blurred';
+            break;
+
+          default:
+            throw "Searchmarks: unknown event: "+event.name;
         }
       }
       
       safari.application.activeBrowserWindow.activeTab.addEventListener("message", waitForMessage, true);
+
+      function waitForSettingChange(event)
+      {
+        switch (event.key)
+        {
+          case 'show-go-button':
+            if (event.newValue == true)
+            {
+              $('#go_button').show();
+            }
+            else
+            {
+              $('#go_button').hide();
+            }
+            break;
+
+          default:
+            throw "Searchmarks: unknown setting: "+event.key;
+        }
+      }
+ 
+      // Apple dev docs are WRONG - adding to safari.self does not work!!!
+      // thanks - http://bitbucket.org/jpc/wrzuta.safariextension/wiki/Home
+      safari.extension.settings.addEventListener("change", waitForSettingChange, true);
       
     </script>
     
@@ -204,7 +259,7 @@
 
     <form onSubmit="SearchmarksUI.search(document.getElementById('search_field').value); void(0);" >
       <input id="search_field" type="search" autosave="org.horizon-nigh.searchmarks.ext.safari" results="10" />
-      <input id="go_button" type="submit" value="&#8594;" />
+      <input id="go_button" type="submit" value="Search" />
     </form>
     
     <a class="engine_button" id="engine_button_wikipedia" href="javascript:SearchmarksUI.setSearchEngine('wikipedia'); void(0);">Wikipedia</a>
