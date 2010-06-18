@@ -202,8 +202,8 @@
             {
               setTimeout(function()
               {
-                safari.self.tab.dispatchMessage("window-focus", this.href);
-              }, 100);
+                $('body').get(0).className = 'focused';
+              }, 50);
             }
           );
 
