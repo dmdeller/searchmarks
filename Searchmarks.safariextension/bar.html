@@ -67,6 +67,7 @@
       SearchmarksUI = {
       
         searchEngine : null,
+        settingsPageReplacedURL : null,
     
         search : function(query)
         {
@@ -92,7 +93,7 @@
               break;
               
             default:
-              throw "Unknown search engine";
+              throw "Searchmarks: unknown search engine";
           }
           
           safari.application.activeBrowserWindow.activeTab.url = url;
@@ -118,7 +119,36 @@
             $('#search_field').select();
             $('#search_field').focus();
           }
-        }
+        },
+
+        toggleSettingsPage : function()
+        {
+          var settingsURL = safari.extension.baseURI+'settings.html';
+  
+          // button state: OFF -> ON
+          if (safari.application.activeBrowserWindow.activeTab.url != settingsURL)
+          {
+            this.settingsPageReplacedURL = safari.application.activeBrowserWindow.activeTab.url;
+            safari.application.activeBrowserWindow.activeTab.url = settingsURL;
+            $('#settings_button').get(0).className = 'toggled';
+          }
+          // button state: ON -> OFF
+          else
+          {
+            if (this.settingsPageReplacedURL != null)
+            {
+              safari.application.activeBrowserWindow.activeTab.url = this.settingsPageReplacedURL;
+            }
+            else
+            {
+              // no page to restore
+              safari.application.activeBrowserWindow.activeTab.url = safari.extension.baseURI+'blank.html';
+            }
+
+            this.settingsPageReplacedURL = null;
+            $('#settings_button').get(0).className = '';
+          }
+        },
         
       }
       
@@ -146,7 +176,7 @@
   </head>
   
   <body>
-    <a href="javascript:return false;">Searchmarks</a>
+    <a id="settings_button" href="javascript:SearchmarksUI.toggleSettingsPage(); return false;">Searchmarks</a>
     <form onSubmit="SearchmarksUI.search(document.getElementById('search_field').value); return false;" >
       <input id="search_field" type="search" autosave="org.horizon-nigh.searchmarks.ext.safari" results="10" />
       <input id="go_button" type="submit" value="&#8594;" />
