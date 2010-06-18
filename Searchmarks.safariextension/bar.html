@@ -267,7 +267,7 @@
       <img id="settings_button_img" src="logo 16x10 black.png" />
     </a>
 
-    <form onSubmit="SearchmarksUI.search(document.getElementById('search_field').value); void(0);" >
+    <form onSubmit="SearchmarksUI.search(document.getElementById('search_field').value); return false;" >
       <input id="search_field" type="search" autosave="org.horizon-nigh.searchmarks.ext.safari" results="10" />
       <input id="go_button" type="submit" value="Search" />
     </form>
