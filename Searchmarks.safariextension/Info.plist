@@ -11,9 +11,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>0.1.2010-06-18a</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Bars</key>
@@ -75,6 +75,8 @@
 			<string>All</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://dl.dropbox.com/u/123393/searchmarks-dev-update.plist</string>
 	<key>Website</key>
 	<string>http://github.com/dmdeller/searchmarks</string>
 </dict>
