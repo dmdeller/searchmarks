@@ -135,7 +135,7 @@
           // button state: ON -> OFF
           else
           {
-            if (this.settingsPageReplacedURL != null)
+            if (this.settingsPageReplacedURL != null && this.settingsPageReplacedURL != '')
             {
               safari.application.activeBrowserWindow.activeTab.url = this.settingsPageReplacedURL;
             }
@@ -155,8 +155,30 @@
       $(document).ready(
         function()
         {
+
           $('#opensearch_add_button').hide();
+
           SearchmarksUI.setSearchEngine('wikipedia', false);
+
+          $('#settings_button').mouseenter(
+            function()
+            {
+              if ($('#settings_button').get(0).className != 'toggled')
+              {
+                $('#settings_button_img').get(0).src = 'logo 16x10 white.png';
+              }
+            }
+          );
+          $('#settings_button').mouseleave(
+            function()
+            {
+              if ($('#settings_button').get(0).className != 'toggled')
+              {
+                $('#settings_button_img').get(0).src = 'logo 16x10 black.png';
+              }
+            }
+          );
+
         }
       );
       
@@ -176,7 +198,10 @@
   </head>
   
   <body>
-    <a id="settings_button" href="javascript:SearchmarksUI.toggleSettingsPage(); return false;">Searchmarks</a>
+    <a id="settings_button" style="display: inline-block; height: 12px;" href="javascript:SearchmarksUI.toggleSettingsPage(); return false;">
+      <img id="settings_button_img" src="logo 16x10 black.png" />
+    </a>
+
     <form onSubmit="SearchmarksUI.search(document.getElementById('search_field').value); return false;" >
       <input id="search_field" type="search" autosave="org.horizon-nigh.searchmarks.ext.safari" results="10" />
       <input id="go_button" type="submit" value="&#8594;" />
