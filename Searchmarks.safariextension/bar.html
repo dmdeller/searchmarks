@@ -119,6 +119,12 @@
           safari.application.activeBrowserWindow.activeTab.url = url;
         },
         
+        focusSearchField : function()
+        {
+          $('#search_field').select();
+          $('#search_field').focus();
+        },
+        
         setSearchEngine : function(searchEngine, setFocus)
         {
           // un-toggle all buttons
@@ -136,8 +142,7 @@
           
           if (setFocus == undefined || setFocus == true)
           {
-            $('#search_field').select();
-            $('#search_field').focus();
+            this.focusSearchField();
           }
         },
 
