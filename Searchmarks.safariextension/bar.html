@@ -198,19 +198,19 @@
   </head>
   
   <body>
-    <a id="settings_button" style="display: inline-block; height: 12px;" href="javascript:SearchmarksUI.toggleSettingsPage(); return false;">
+    <a id="settings_button" style="display: inline-block; height: 12px;" href="javascript:SearchmarksUI.toggleSettingsPage(); void(0);">
       <img id="settings_button_img" src="logo 16x10 black.png" />
     </a>
 
-    <form onSubmit="SearchmarksUI.search(document.getElementById('search_field').value); return false;" >
+    <form onSubmit="SearchmarksUI.search(document.getElementById('search_field').value); void(0);" >
       <input id="search_field" type="search" autosave="org.horizon-nigh.searchmarks.ext.safari" results="10" />
       <input id="go_button" type="submit" value="&#8594;" />
     </form>
     
-    <a class="engine_button" id="engine_button_wikipedia" href="javascript:SearchmarksUI.setSearchEngine('wikipedia'); return false;">Wikipedia</a>
-    <a class="engine_button" id="engine_button_amazon" href="javascript:SearchmarksUI.setSearchEngine('amazon'); return false;">Amazon</a>
-    <a class="engine_button" id="engine_button_lastfm" href="javascript:SearchmarksUI.setSearchEngine('lastfm'); return false;">Last.fm</a>
-    <a class="engine_button" id="engine_button_imdb" href="javascript:SearchmarksUI.setSearchEngine('imdb'); return false;">IMDb</a>
+    <a class="engine_button" id="engine_button_wikipedia" href="javascript:SearchmarksUI.setSearchEngine('wikipedia'); void(0);">Wikipedia</a>
+    <a class="engine_button" id="engine_button_amazon" href="javascript:SearchmarksUI.setSearchEngine('amazon'); void(0);">Amazon</a>
+    <a class="engine_button" id="engine_button_lastfm" href="javascript:SearchmarksUI.setSearchEngine('lastfm'); void(0);">Last.fm</a>
+    <a class="engine_button" id="engine_button_imdb" href="javascript:SearchmarksUI.setSearchEngine('imdb'); void(0);">IMDb</a>
     
     <div style="float: right;">
       <input type="button" id="opensearch_add_button" value="Add this site" />
