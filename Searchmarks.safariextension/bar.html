@@ -208,16 +208,6 @@
               }
             }
           );
-          
-          // this only fires when the toolbar (not the window) is brought into focus. see inject.js
-          $(window).bind("focus", function()
-            {
-              setTimeout(function()
-              {
-                $('body').get(0).className = 'focused';
-              }, 50);
-            }
-          );
 
         }
       );
@@ -229,14 +219,6 @@
           case 'discover-opensearch':
             $('#opensearch_add_button').val(event.message);
             $('#opensearch_add_button').show();
-            break;
-
-          case 'window-focus':
-            $('body').get(0).className = 'focused';
-            break;
-
-          case 'window-blur':
-            $('body').get(0).className = 'blurred';
             break;
 
           default:
