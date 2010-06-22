@@ -4,7 +4,8 @@
   <head>
   
     <title>Searchmarks</title>
-    
+
+    <link rel="stylesheet" type="text/css" href="toolbar.css" />
     <style type="text/css">
     
       body
@@ -56,28 +57,12 @@
         width: 796px;
         padding: 2px;
       }
-      
-      
-      button, input[type=submit], input[type=button]
+
+      .toolbar button, .toolbar input[type=submit], .toolbar input[type=button]
       {
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fefefe), to(#b7b7b7));
-        border: 1px solid #555555;
-        -webkit-border-radius: 3px;
         font-family: "Lucida Grande", Arial, sans-serif;
         font-weight: bolder;
         font-size: 10pt;
-      }
-      
-      button:active, input[type=submit]:active, input[type=button]:active
-      {
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b9b9b9), to(#8c8c8c));
-        -webkit-box-shadow: inset 0 0 3px #000000;
-      }
-
-      .blurred button, .blurred input[type=submit], .blurred input[type=button]
-      {
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fefefe), to(#d1d1d1));
-        border: 1px solid #a4a4a4;
       }
     
     </style>
@@ -98,7 +83,7 @@
         
       </div>
     
-      <div id="button_bar">
+      <div id="button_bar" class="toolbar">
         <button>+</button>
         <button>-</button>
       </div>

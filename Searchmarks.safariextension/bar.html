@@ -2,7 +2,8 @@
 <html>
   <head>
   
-    <style>
+    <link rel="stylesheet" type="text/css" href="toolbar.css" />
+    <style type="text/css">
     
       body
       {
@@ -20,63 +21,6 @@
       #search_field
       {
         width: 200px;
-      }
-
-      /* doing my best to replicate colours screen-scraped from actual toolbar buttons */
-      button, input[type=submit], input[type=button]
-      {
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fefefe), to(#b7b7b7));
-        border: 1px solid #555555;
-        -webkit-border-radius: 3px;
-      }
-      
-      button:active, input[type=submit]:active, input[type=button]:active
-      {
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b9b9b9), to(#8c8c8c));
-        -webkit-box-shadow: inset 0 0 3px #000000;
-      }
-
-      .blurred button, .blurred input[type=submit], .blurred input[type=button]
-      {
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fefefe), to(#d1d1d1));
-        border: 1px solid #a4a4a4;
-      }
-      
-      /**
-       * Thanks to Chris Morrell <http://cmorrell.com/> for the toolbar style code
-       */
-      
-      a {
-        color: #282828;
-        font-weight: bold;
-        text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
-        text-decoration: none;
-        padding: 1px 7px 2px;
-        display: inline-block;
-        border-radius: 8px;
-        cursor: default;
-        border: none;
-        background: none;
-      }
-      
-      a:hover {
-        color: #fff;
-        text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
-        background: rgba(0, 0, 0, 0.21);
-      }
-      
-      a:active, a.toggled {
-        color: #fff;
-        text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
-        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(255, 255, 255, 0.8);
-      }
-      
-      a.toggled {
-        background: rgba(0, 0, 0, 0.35);
-      }
-      
-      a:active {
-        background: rgba(0, 0, 0, 0.49);
       }
       
     </style>
@@ -256,7 +200,7 @@
     
   </head>
   
-  <body>
+  <body class="toolbar">
     <a id="settings_button" style="display: inline-block; height: 12px;" href="javascript:SearchmarksUI.toggleSettingsPage(); void(0);">
       <img id="settings_button_img" src="logo 16x10 black.png" />
     </a>

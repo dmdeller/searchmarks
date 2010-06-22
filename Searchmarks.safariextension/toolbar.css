@@ -1,0 +1,58 @@
+/**
+ * Thanks to Chris Morrell <http://cmorrell.com/> for the original toolbar style code
+ */
+
+.toolbar a {
+  color: #282828;
+  font-weight: bold;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  padding: 1px 7px 2px;
+  display: inline-block;
+  border-radius: 8px;
+  cursor: default;
+  border: none;
+  background: none;
+}
+
+.toolbar a:hover {
+  color: #fff;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.21);
+}
+
+.toolbar a:active, .toolbar a.toggled {
+  color: #fff;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.toolbar a.toggled {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.toolbar a:active {
+  background: rgba(0, 0, 0, 0.49);
+}
+
+
+/* this bit was me - doing my best to replicate colours screen-scraped from actual toolbar buttons */
+
+.toolbar button, .toolbar input[type=submit], .toolbar input[type=button]
+{
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fefefe), to(#b7b7b7));
+  border: 1px solid #555555;
+  -webkit-border-radius: 3px;
+}
+
+.toolbar button:active, .toolbar input[type=submit]:active, .toolbar input[type=button]:active
+{
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b9b9b9), to(#8c8c8c));
+  -webkit-box-shadow: inset 0 0 3px #000000;
+}
+
+.toolbar .blurred button, .toolbar .blurred input[type=submit], .toolbar .blurred input[type=button]
+{
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fefefe), to(#d1d1d1));
+  border: 1px solid #a4a4a4;
+}
