@@ -5,8 +5,6 @@
   
     <script type="text/javascript">
       
-      const bars = safari.extension.bars;
-      
       function performCommand(event)
       {
         if (event.command == 'searchmarks.button.toggle-bar')
@@ -21,6 +19,7 @@
     
       function toggleSearchmarksBar()
       {
+        var bars = safari.extension.bars;
         var found = false;
         
         for (var i = 0; i < bars.length; ++i)
